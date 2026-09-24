@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050b12;
+    color: white;
+    line-height: 1.6;
+}
+
+
+/* MENU */
+
+header {
+    min-height: 90vh;
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            #164a65,
+            #07121c 45%,
+            #050b12 75%
+        );
+}
+
+nav {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+
+    padding: 25px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #19d9ff;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #19d9ff;
+}
+
+
+/* INÍCIO */
+
+.hero {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+
+    min-height: 75vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.tag {
+    color: #19d9ff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 8vw, 110px);
+    line-height: .9;
+}
+
+.hero h1 span {
+    color: #19d9ff;
+}
+
+.hero-text > p:not(.tag) {
+    color: #a9bac4;
+    max-width: 550px;
+    margin: 25px 0;
+    font-size: 18px;
+}
+
+.botao {
+    display: inline-block;
+
+    background: #19d9ff;
+    color: #031018;
+
+    padding: 14px 25px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.botao:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px #19d9ff55;
+}
+
+
+/* DRONE */
+
+.drone {
+    height: 350px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 180px;
+
+    background: #ffffff08;
+
+    border: 1px solid #ffffff12;
+
+    border-radius: 30px;
+
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+/* SEÇÕES */
+
+.secao {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+
+    padding: 100px 0;
+}
+
+h2 {
+    font-size: 45px;
+    margin-bottom: 25px;
+}
+
+.texto {
+    max-width: 750px;
+    color: #a9bac4;
+    font-size: 18px;
+}
+
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #0c1822;
+
+    border: 1px solid #ffffff10;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #19d9ff66;
+}
+
+.icone {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #91a5b0;
+}
+
+
+/* APLICAÇÕES */
+
+.destaque {
+    border-top: 1px solid #ffffff10;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.lista div {
+    background: #0c1822;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ffffff0c;
+}
+
+
+/* CURIOSIDADE */
+
+.curiosidade {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto 100px;
+
+    text-align: center;
+
+    padding: 60px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0c2533,
+            #09151f
+        );
+
+    border-radius: 25px;
+}
+
+.curiosidade p {
+    color: #a9bac4;
+    margin: 15px auto;
+    max-width: 650px;
+}
+
+.curiosidade button {
+    border: none;
+
+    background: #19d9ff;
+    color: #031018;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.curiosidade button:hover {
+    transform: scale(1.05);
+}
+
+
+/* RODAPÉ */
+
+footer {
+    border-top: 1px solid #ffffff10;
+
+    padding: 30px 5%;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #8496a0;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 750px) {
+
+    .menu {
+        gap: 10px;
+    }
+
+    .menu a {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 0;
+    }
+
+    .drone {
+        height: 250px;
+        font-size: 120px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .lista {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 35px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
