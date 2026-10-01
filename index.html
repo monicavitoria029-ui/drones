@@ -1,154 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drone Tech</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLIGHTLAB | Academia de Drones</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">DRONE<span>TECH</span></div>
+<aside class="sidebar">
+  <a href="#inicio" class="brand">FLIGHT<span>LAB</span></a>
+  <p class="side-label">ACADEMIA DE PILOTAGEM</p>
+  <a href="#inicio">01 — Visão geral</a>
+  <a href="#aulas">02 — Aprender a pilotar</a>
+  <a href="#simulador">03 — Simulador</a>
+  <a href="#seguranca">04 — Segurança</a>
+  <a href="#teste">05 — Teste seus conhecimentos</a>
+  <div class="side-footer">TREINAMENTO VIRTUAL · V1.0</div>
+</aside>
 
-            <div class="menu">
-                <a href="#inicio">Início</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#tipos">Tipos</a>
-                <a href="#aplicacoes">Aplicações</a>
-            </div>
-        </nav>
+<main>
+  <header class="topbar" id="inicio">
+    <div>
+      <p class="eyebrow">CENTRO DE TREINAMENTO / MÓDULO 01</p>
+      <h1>Academia de pilotagem</h1>
+    </div>
+    <span class="status"><i></i> MODO DE APRENDIZAGEM</span>
+  </header>
 
-        <section class="hero" id="inicio">
-            <div class="hero-text">
-                <p class="tag">TECNOLOGIA • INOVAÇÃO • FUTURO</p>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">TECNOLOGIA AÉREA</p>
+      <h2>Domine os<br><span>controles de voo.</span></h2>
+      <p>Aprenda os fundamentos da pilotagem, entenda os comandos e pratique em um simulador virtual interativo.</p>
+      <a href="#simulador" class="primary">INICIAR SIMULADOR ↗️</a>
+    </div>
+    <div class="drone-visual">
+      <div class="orbit"></div>
+      <div class="drone-icon">⌘</div>
+      <span class="visual-label">UAV / FLIGHT SYSTEM</span>
+      <span class="visual-code">FL-001 · TRAINING</span>
+    </div>
+  </section>
 
-                <h1>
-                    O céu é o<br>
-                    <span>limite.</span>
-                </h1>
+  <section class="stats">
+    <article><small>MÓDULOS</small><strong>04</strong><span>Conteúdo introdutório</span></article>
+    <article><small>COMANDOS</small><strong>08</strong><span>Movimentos simulados</span></article>
+    <article><small>OBJETIVO</small><strong>100%</strong><span>Aprendizagem segura</span></article>
+  </section>
 
-                <p>
-                    Descubra como os drones estão transformando
-                    a tecnologia e fazendo parte do nosso dia a dia.
-                </p>
+  <section class="section" id="aulas">
+    <div class="section-title">
+      <div><p class="eyebrow">01 / FUNDAMENTOS</p><h2>Aprenda os comandos</h2></div>
+      <p>Conheça cada movimento antes de iniciar a prática.</p>
+    </div>
 
-                <a href="#sobre" class="botao">
-                    Conheça os drones
-                </a>
-            </div>
+    <div class="lessons">
+      <article class="card">
+        <span class="number">01</span>
+        <p class="eyebrow">ALTITUDE</p>
+        <h3>Subir e descer</h3>
+        <p>Controla a altura do drone. Pratique mudanças suaves e evite obstáculos acima e abaixo da aeronave.</p>
+        <div class="command">↑ SUBIR <span>↓ DESCER</span></div>
+      </article>
 
-            <div class="drone">
-                🚁
-            </div>
-        </section>
-    </header>
+      <article class="card">
+        <span class="number">02</span>
+        <p class="eyebrow">MOVIMENTO</p>
+        <h3>Avançar e recuar</h3>
+        <p>Permite deslocar o drone para frente ou para trás. Observe a orientação da aeronave durante o movimento.</p>
+        <div class="command">↑ AVANÇAR <span>↓ RECUAR</span></div>
+      </article>
 
+      <article class="card">
+        <span class="number">03</span>
+        <p class="eyebrow">DIREÇÃO</p>
+        <h3>Deslocar e girar</h3>
+        <p>Os comandos laterais movem o drone para os lados. O giro altera para onde a frente da aeronave aponta.</p>
+        <div class="command">← ESQUERDA <span>DIREITA →</span></div>
+      </article>
+    </div>
+  </section>
 
-    <main>
+  <section class="section" id="simulador">
+    <div class="section-title">
+      <div><p class="eyebrow">02 / PRÁTICA VIRTUAL</p><h2>Simulador de voo</h2></div>
+      <p>Experimente os comandos e acompanhe as alterações na tela.</p>
+    </div>
 
-        <section id="sobre" class="secao">
-            <p class="tag">O QUE É?</p>
+    <div class="simulator">
+      <div class="sim-left">
+        <div class="screen-header">
+          <span>AMBIENTE DE SIMULAÇÃO</span>
+          <span id="flightState">NO SOLO</span>
+        </div>
+        <div class="sky" id="sky">
+          <div class="sun"></div>
+          <div class="mountains"></div>
+          <div class="ground"></div>
+          <div class="crosshair">+</div>
+          <div id="virtualDrone" class="virtual-drone">✥</div>
+          <div class="telemetry">
+            ALTITUDE <strong id="altitude">0 m</strong><br>
+            POSIÇÃO <strong id="position">CENTRO</strong>
+          </div>
+        </div>
+        <p class="disclaimer">SIMULAÇÃO EDUCATIVA — não controla um drone real.</p>
+      </div>
 
-            <h2>O que são drones?</h2>
+      <div class="controller">
+        <p class="eyebrow">PAINEL DE COMANDO</p>
+        <h3>Controle virtual</h3>
 
-            <p class="texto">
-                Drones são aeronaves controladas remotamente ou capazes
-                de realizar voos de forma automatizada. Eles possuem
-                diferentes tamanhos, tecnologias e funções.
-            </p>
-        </section>
+        <label>ALTITUDE</label>
+        <div class="button-row">
+          <button data-command="up">↑ Subir</button>
+          <button data-command="down">↓ Descer</button>
+        </div>
 
+        <label>MOVIMENTAÇÃO</label>
+        <div class="direction-pad">
+          <button data-command="forward" class="up">↑</button>
+          <button data-command="left">←</button>
+          <button data-command="back">↓</button>
+          <button data-command="right">→</button>
+        </div>
 
-        <section id="tipos" class="secao">
+        <label>ORIENTAÇÃO</label>
+        <div class="button-row">
+          <button data-command="rotateLeft">↶ Girar</button>
+          <button data-command="rotateRight">Girar ↷</button>
+        </div>
 
-            <p class="tag">MODELOS</p>
+        <div class="flight-buttons">
+          <button id="takeoff" class="primary">▶️ DECOLAR</button>
+          <button id="land" class="secondary">■ POUSAR</button>
+        </div>
+        <button id="reset" class="reset">↻ Reiniciar simulação</button>
+        <p id="message" class="message">Clique em DECOLAR para começar.</p>
+      </div>
+    </div>
+  </section>
 
-            <h2>Tipos de drones</h2>
+  <section class="section" id="seguranca">
+    <div class="section-title">
+      <div><p class="eyebrow">03 / PROCEDIMENTOS</p><h2>Checklist de segurança</h2></div>
+      <p>Marque os itens que você verificou antes de um voo real.</p>
+    </div>
 
-            <div class="cards">
+    <div class="checklist">
+      <label><input type="checkbox"><span><strong>Inspecionar o drone</strong><small>Verifique hélices, bateria, estrutura e controle.</small></span></label>
+      <label><input type="checkbox"><span><strong>Escolher o local correto</strong><small>Prefira espaço aberto, longe de pessoas e obstáculos.</small></span></label>
+      <label><input type="checkbox"><span><strong>Verificar o clima</strong><small>Evite chuva, vento forte e baixa visibilidade.</small></span></label>
+      <label><input type="checkbox"><span><strong>Conferir as regras</strong><small>Verifique as exigências da ANAC, as regras do DECEA e as restrições locais aplicáveis.</small></span></label>
+      <label><input type="checkbox"><span><strong>Manter contato visual</strong><small>Mantenha o drone à vista e esteja pronto para interromper o voo.</small></span></label>
+      <div class="progress"><div><span id="progressBar"></span></div><small id="progressText">0 de 5 itens concluídos</small></div>
+    </div>
+  </section>
 
-                <div class="card">
-                    <div class="icone">📷</div>
-                    <h3>Drone com câmera</h3>
-                    <p>
-                        Utilizado para fotografias, vídeos e imagens
-                        aéreas.
-                    </p>
-                </div>
+  <section class="section" id="teste">
+    <div class="section-title">
+      <div><p class="eyebrow">04 / AVALIAÇÃO</p><h2>Teste seus conhecimentos</h2></div>
+    </div>
 
-                <div class="card">
-                    <div class="icone">🏁</div>
-                    <h3>Drone de corrida</h3>
-                    <p>
-                        Desenvolvido para velocidade, agilidade
-                        e competições.
-                    </p>
-                </div>
+    <div class="quiz">
+      <p class="eyebrow" id="questionNumber">QUESTÃO 01 / 03</p>
+      <h3 id="question">O que fazer antes de decolar?</h3>
+      <div id="answers" class="answers"></div>
+      <div class="quiz-bottom">
+        <p id="feedback">Selecione uma resposta.</p>
+        <button id="nextQuestion" class="primary" disabled>PRÓXIMA →</button>
+      </div>
+    </div>
+  </section>
 
-                <div class="card">
-                    <div class="icone">🌱</div>
-                    <h3>Drone agrícola</h3>
-                    <p>
-                        Pode auxiliar no monitoramento e na
-                        agricultura de precisão.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-
-        <section id="aplicacoes" class="secao destaque">
-
-            <p class="tag">TECNOLOGIA</p>
-
-            <h2>Onde os drones são usados?</h2>
-
-            <div class="lista">
-
-                <div>📸 Fotografia e filmagem</div>
-                <div>🌾 Agricultura</div>
-                <div>🏗️ Construção civil</div>
-                <div>🗺️ Mapeamento</div>
-                <div>🔎 Monitoramento</div>
-                <div>🎬 Produção audiovisual</div>
-
-            </div>
-
-        </section>
-
-
-        <section class="curiosidade">
-
-            <h2>Você sabia?</h2>
-
-            <p>
-                Os drones podem utilizar sensores, câmeras,
-                GPS e sistemas automatizados para realizar
-                diferentes tarefas.
-            </p>
-
-            <button id="botaoCuriosidade">
-                Mostrar curiosidade
-            </button>
-
-            <p id="curiosidade"></p>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-        <div class="logo">DRONE<span>TECH</span></div>
-        <p>© 2026 Drone Tech • Projeto educacional</p>
-    </footer>
-
-
-    <script src="script.js"></script>
-
+  <footer>
+    <a href="#inicio" class="brand">FLIGHT<span>LAB</span></a>
+    <p>Projeto educacional · Fundamentos de pilotagem de drones</p>
+  </footer>
+</main>
 </body>
 </html>
