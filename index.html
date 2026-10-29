@@ -1,184 +1,139 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLIGHTLAB | Academia de Drones</title>
+  <title>Drone Flight Academy</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
 
-<aside class="sidebar">
-  <a href="#inicio" class="brand">FLIGHT<span>LAB</span></a>
-  <p class="side-label">ACADEMIA DE PILOTAGEM</p>
-  <a href="#inicio">01 — Visão geral</a>
-  <a href="#aulas">02 — Aprender a pilotar</a>
-  <a href="#simulador">03 — Simulador</a>
-  <a href="#seguranca">04 — Segurança</a>
-  <a href="#teste">05 — Teste seus conhecimentos</a>
-  <div class="side-footer">TREINAMENTO VIRTUAL · V1.0</div>
-</aside>
+<header>
+  <div class="logo">DRONE<span>FLIGHT</span></div>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#curso">Curso</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#seguranca">Segurança</a>
+  </nav>
+</header>
 
-<main>
-  <header class="topbar" id="inicio">
-    <div>
-      <p class="eyebrow">CENTRO DE TREINAMENTO / MÓDULO 01</p>
-      <h1>Academia de pilotagem</h1>
-    </div>
-    <span class="status"><i></i> MODO DE APRENDIZAGEM</span>
-  </header>
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <p class="tag">ACADEMIA DE PILOTAGEM</p>
+    <h1>APRENDA A<br><span>PILOTAR DRONES</span></h1>
+    <p>Conheça os fundamentos da pilotagem e pratique os comandos em um simulador interativo.</p>
+    <a href="#simulador" class="main-button">ACESSAR SIMULADOR</a>
+  </div>
+</section>
 
-  <section class="hero">
-    <div>
-      <p class="eyebrow">TECNOLOGIA AÉREA</p>
-      <h2>Domine os<br><span>controles de voo.</span></h2>
-      <p>Aprenda os fundamentos da pilotagem, entenda os comandos e pratique em um simulador virtual interativo.</p>
-      <a href="#simulador" class="primary">INICIAR SIMULADOR ↗️</a>
-    </div>
-    <div class="drone-visual">
-      <div class="orbit"></div>
-      <div class="drone-icon">⌘</div>
-      <span class="visual-label">UAV / FLIGHT SYSTEM</span>
-      <span class="visual-code">FL-001 · TRAINING</span>
-    </div>
-  </section>
+<section class="course" id="curso">
+  <p class="tag">FORMAÇÃO</p>
+  <h2>Aprenda os fundamentos</h2>
+  <div class="course-grid">
+    <article>
+      <h3>01. Introdução</h3>
+      <p>Conheça os componentes, os sensores e o funcionamento de um drone.</p>
+    </article>
+    <article>
+      <h3>02. Controles</h3>
+      <p>Entenda os comandos de direção, altitude e rotação.</p>
+    </article>
+    <article>
+      <h3>03. Segurança</h3>
+      <p>Aprenda sobre planejamento, condições do ambiente e cuidados durante o voo.</p>
+    </article>
+  </div>
+</section>
 
-  <section class="stats">
-    <article><small>MÓDULOS</small><strong>04</strong><span>Conteúdo introdutório</span></article>
-    <article><small>COMANDOS</small><strong>08</strong><span>Movimentos simulados</span></article>
-    <article><small>OBJETIVO</small><strong>100%</strong><span>Aprendizagem segura</span></article>
-  </section>
+<section class="simulator" id="simulador">
+  <p class="tag">TREINAMENTO VIRTUAL</p>
+  <h2>Simulador de pilotagem</h2>
+  <p class="description">Pratique os comandos em um ambiente virtual educativo.</p>
 
-  <section class="section" id="aulas">
-    <div class="section-title">
-      <div><p class="eyebrow">01 / FUNDAMENTOS</p><h2>Aprenda os comandos</h2></div>
-      <p>Conheça cada movimento antes de iniciar a prática.</p>
-    </div>
-
-    <div class="lessons">
-      <article class="card">
-        <span class="number">01</span>
-        <p class="eyebrow">ALTITUDE</p>
-        <h3>Subir e descer</h3>
-        <p>Controla a altura do drone. Pratique mudanças suaves e evite obstáculos acima e abaixo da aeronave.</p>
-        <div class="command">↑ SUBIR <span>↓ DESCER</span></div>
-      </article>
-
-      <article class="card">
-        <span class="number">02</span>
-        <p class="eyebrow">MOVIMENTO</p>
-        <h3>Avançar e recuar</h3>
-        <p>Permite deslocar o drone para frente ou para trás. Observe a orientação da aeronave durante o movimento.</p>
-        <div class="command">↑ AVANÇAR <span>↓ RECUAR</span></div>
-      </article>
-
-      <article class="card">
-        <span class="number">03</span>
-        <p class="eyebrow">DIREÇÃO</p>
-        <h3>Deslocar e girar</h3>
-        <p>Os comandos laterais movem o drone para os lados. O giro altera para onde a frente da aeronave aponta.</p>
-        <div class="command">← ESQUERDA <span>DIREITA →</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="simulador">
-    <div class="section-title">
-      <div><p class="eyebrow">02 / PRÁTICA VIRTUAL</p><h2>Simulador de voo</h2></div>
-      <p>Experimente os comandos e acompanhe as alterações na tela.</p>
-    </div>
-
-    <div class="simulator">
-      <div class="sim-left">
-        <div class="screen-header">
-          <span>AMBIENTE DE SIMULAÇÃO</span>
-          <span id="flightState">NO SOLO</span>
+  <div class="simulator-layout">
+    <div class="flight-area">
+      <div class="flight-info">
+        <div>
+          <small>STATUS</small>
+          <strong id="status">NO SOLO</strong>
         </div>
-        <div class="sky" id="sky">
-          <div class="sun"></div>
-          <div class="mountains"></div>
-          <div class="ground"></div>
-          <div class="crosshair">+</div>
-          <div id="virtualDrone" class="virtual-drone">✥</div>
-          <div class="telemetry">
-            ALTITUDE <strong id="altitude">0 m</strong><br>
-            POSIÇÃO <strong id="position">CENTRO</strong>
-          </div>
+        <div>
+          <small>ALTITUDE</small>
+          <strong id="altitude">0 m</strong>
         </div>
-        <p class="disclaimer">SIMULAÇÃO EDUCATIVA — não controla um drone real.</p>
+        <div>
+          <small>VELOCIDADE</small>
+          <strong id="speed">0 km/h</strong>
+        </div>
       </div>
 
-      <div class="controller">
-        <p class="eyebrow">PAINEL DE COMANDO</p>
-        <h3>Controle virtual</h3>
-
-        <label>ALTITUDE</label>
-        <div class="button-row">
-          <button data-command="up">↑ Subir</button>
-          <button data-command="down">↓ Descer</button>
+      <div class="sky" id="flightArea">
+        <div class="horizon"></div>
+        <div class="drone" id="drone">
+          <div class="arm arm-one"></div>
+          <div class="arm arm-two"></div>
+          <div class="rotor rotor-one"></div>
+          <div class="rotor rotor-two"></div>
+          <div class="rotor rotor-three"></div>
+          <div class="rotor rotor-four"></div>
+          <div class="drone-body"></div>
+          <div class="camera"></div>
         </div>
+        <div class="ground-label">ÁREA VIRTUAL DE VOO</div>
+      </div>
 
-        <label>MOVIMENTAÇÃO</label>
-        <div class="direction-pad">
-          <button data-command="forward" class="up">↑</button>
-          <button data-command="left">←</button>
-          <button data-command="back">↓</button>
-          <button data-command="right">→</button>
-        </div>
-
-        <label>ORIENTAÇÃO</label>
-        <div class="button-row">
-          <button data-command="rotateLeft">↶ Girar</button>
-          <button data-command="rotateRight">Girar ↷</button>
-        </div>
-
-        <div class="flight-buttons">
-          <button id="takeoff" class="primary">▶️ DECOLAR</button>
-          <button id="land" class="secondary">■ POUSAR</button>
-        </div>
-        <button id="reset" class="reset">↻ Reiniciar simulação</button>
-        <p id="message" class="message">Clique em DECOLAR para começar.</p>
+      <div class="flight-buttons">
+        <button id="takeoff" class="takeoff">DECOLAR</button>
+        <button id="land" class="land">POUSAR</button>
+        <button id="reset" class="reset">REINICIAR</button>
       </div>
     </div>
-  </section>
 
-  <section class="section" id="seguranca">
-    <div class="section-title">
-      <div><p class="eyebrow">03 / PROCEDIMENTOS</p><h2>Checklist de segurança</h2></div>
-      <p>Marque os itens que você verificou antes de um voo real.</p>
-    </div>
+    <div class="controls">
+      <h3>CONTROLES DE VOO</h3>
+      <p class="control-label">DIREÇÃO</p>
 
-    <div class="checklist">
-      <label><input type="checkbox"><span><strong>Inspecionar o drone</strong><small>Verifique hélices, bateria, estrutura e controle.</small></span></label>
-      <label><input type="checkbox"><span><strong>Escolher o local correto</strong><small>Prefira espaço aberto, longe de pessoas e obstáculos.</small></span></label>
-      <label><input type="checkbox"><span><strong>Verificar o clima</strong><small>Evite chuva, vento forte e baixa visibilidade.</small></span></label>
-      <label><input type="checkbox"><span><strong>Conferir as regras</strong><small>Verifique as exigências da ANAC, as regras do DECEA e as restrições locais aplicáveis.</small></span></label>
-      <label><input type="checkbox"><span><strong>Manter contato visual</strong><small>Mantenha o drone à vista e esteja pronto para interromper o voo.</small></span></label>
-      <div class="progress"><div><span id="progressBar"></span></div><small id="progressText">0 de 5 itens concluídos</small></div>
-    </div>
-  </section>
-
-  <section class="section" id="teste">
-    <div class="section-title">
-      <div><p class="eyebrow">04 / AVALIAÇÃO</p><h2>Teste seus conhecimentos</h2></div>
-    </div>
-
-    <div class="quiz">
-      <p class="eyebrow" id="questionNumber">QUESTÃO 01 / 03</p>
-      <h3 id="question">O que fazer antes de decolar?</h3>
-      <div id="answers" class="answers"></div>
-      <div class="quiz-bottom">
-        <p id="feedback">Selecione uma resposta.</p>
-        <button id="nextQuestion" class="primary" disabled>PRÓXIMA →</button>
+      <div class="direction-pad">
+        <button id="up" class="up">▲</button>
+        <button id="left" class="left">◀</button>
+        <button id="right" class="right">▶</button>
+        <button id="down" class="down">▼</button>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <a href="#inicio" class="brand">FLIGHT<span>LAB</span></a>
-    <p>Projeto educacional · Fundamentos de pilotagem de drones</p>
-  </footer>
-</main>
+      <p class="control-label">ALTITUDE</p>
+      <div class="altitude-controls">
+        <button id="increaseAltitude">+ SUBIR</button>
+        <button id="decreaseAltitude">− DESCER</button>
+      </div>
+
+      <p class="control-label">ROTAÇÃO</p>
+      <button id="rotate" class="rotate">GIRAR 45°</button>
+
+      <p class="keyboard-help">
+        Você também pode usar as setas do teclado para movimentar o drone.
+      </p>
+    </div>
+  </div>
+  <p class="notice">Simulador educativo: os comandos não controlam um drone real.</p>
+</section>
+
+<section class="safety" id="seguranca">
+  <p class="tag">RESPONSABILIDADE</p>
+  <h2>Segurança em primeiro lugar</h2>
+  <div class="safety-list">
+    <p>✓ Verifique as condições do ambiente.</p>
+    <p>✓ Respeite as regras e áreas permitidas para voo.</p>
+    <p>✓ Mantenha o drone dentro do seu campo de visão.</p>
+    <p>✓ Confira o equipamento antes de cada operação.</p>
+  </div>
+</section>
+
+<footer>
+  <p>DRONE FLIGHT ACADEMY © 2026 — Projeto educacional</p>
+</footer>
+
 </body>
 </html>

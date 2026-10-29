@@ -1,300 +1,144 @@
-const drone = document.getElementById("virtualDrone");
-const altitudeLabel = document.getElementById("altitude");
-const positionLabel = document.getElementById("position");
-const flightState = document.getElementById("flightState");
-const message = document.getElementById("message");
 
-let state = {
-  x: 50,
-  y: 55,
-  altitude: 0,
-  heading: 0,
-  flying: false
-};
+const drone = document.getElementById("drone");
+const statusText = document.getElementById("status");
+const altitudeText = document.getElementById("altitude");
+const speedText = document.getElementById("speed");
+const flightArea = document.getElementById("flightArea");
+
+let flying = false;
+let altitude = 0;
+let x = 0;
+let y = 0;
+let rotation = 0;
+let speed = 0;
+
+const maxAltitude = 120;
+const step = 20;
 
 function updateDisplay() {
-  drone.style.left = state.x + "%";
-  drone.style.top = state.y + "%";
-  drone.style.rotate = state.heading + "deg";
+  drone.style.transform =
+    `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
 
-  altitudeLabel.textContent = state.altitude + " m";
-  flightState.textContent = state.flying
-    ? "EM VOO VIRTUAL"
-    : "NO SOLO";
+  altitudeText.textContent = altitude + " m";
+  speedText.textContent = speed + " km/h";
 
-  if (state.x < 44) {
-    positionLabel.textContent = "ESQUERDA";
-  } else if (state.x > 56) {
-    positionLabel.textContent = "DIREITA";
-  } else if (state.y < 49) {
-    positionLabel.textContent = "FRENTE";
-  } else if (state.y > 61) {
-    positionLabel.textContent = "FUNDO";
+  if (flying) {
+    statusText.textContent = "EM VOO";
+    statusText.style.color = "#36d98a";
   } else {
-    positionLabel.textContent = "CENTRO";
+    statusText.textContent = "NO SOLO";
+    statusText.style.color = "#36b4f4";
   }
 }
 
-function command(action) {
-  if (!state.flying) {
-    message.textContent =
-      "Clique em DECOLAR antes de usar os controles.";
+function takeoff() {
+  if (flying) return;
+
+  flying = true;
+  altitude = 10;
+  speed = 0;
+  updateDisplay();
+}
+
+function land() {
+  if (!flying) return;
+
+  flying = false;
+  altitude = 0;
+  speed = 0;
+  x = 0;
+  y = 0;
+  rotation = 0;
+
+  updateDisplay();
+}
+
+function resetSimulator() {
+  flying = false;
+  altitude = 0;
+  speed = 0;
+  x = 0;
+  y = 0;
+  rotation = 0;
+
+  updateDisplay();
+}
+
+function moveDrone(direction) {
+  if (!flying) {
+    statusText.textContent = "DECOLE PRIMEIRO";
     return;
   }
 
-  switch (action) {
-    case "up":
-      state.altitude = Math.min(30, state.altitude + 2);
-      message.textContent = "Subida virtual realizada.";
-      break;
+  const boundsX = flightArea.clientWidth / 2 - 80;
+  const boundsY = flightArea.clientHeight / 2 - 60;
 
-    case "down":
-      state.altitude = Math.max(1, state.altitude - 2);
-      message.textContent = "Descida virtual realizada.";
-      break;
-
-    case "forward":
-      state.y = Math.max(18, state.y - 4);
-      message.textContent = "Avanço virtual realizado.";
-      break;
-
-    case "back":
-      state.y = Math.min(82, state.y + 4);
-      message.textContent = "Recuo virtual realizado.";
-      break;
-
-    case "left":
-      state.x = Math.max(12, state.x - 4);
-      message.textContent = "Movimento à esquerda realizado.";
-      break;
-
-    case "right":
-      state.x = Math.min(88, state.x + 4);
-      message.textContent = "Movimento à direita realizado.";
-      break;
-
-    case "rotateLeft":
-      state.heading -= 15;
-      message.textContent = "Giro virtual à esquerda.";
-      break;
-
-    case "rotateRight":
-      state.heading += 15;
-      message.textContent = "Giro virtual à direita.";
-      break;
+  if (direction === "up") {
+    y = Math.max(y - step, -boundsY);
   }
 
+  if (direction === "down") {
+    y = Math.min(y + step, boundsY);
+  }
+
+  if (direction === "left") {
+    x = Math.max(x - step, -boundsX);
+  }
+
+  if (direction === "right") {
+    x = Math.min(x + step, boundsX);
+  }
+
+  speed = 15;
   updateDisplay();
 }
 
-document.querySelectorAll("[data-command]").forEach(button => {
-  button.addEventListener("click", () => {
-    command(button.dataset.command);
-  });
-});
-
-document.getElementById("takeoff").addEventListener("click", () => {
-  if (state.flying) {
-    message.textContent = "O drone virtual já está no ar.";
+function changeAltitude(value) {
+  if (!flying) {
+    statusText.textContent = "DECOLE PRIMEIRO";
     return;
   }
 
-  state.flying = true;
-  state.altitude = 2;
-  message.textContent =
-    "Decolagem virtual concluída. Pratique um comando por vez.";
-
+  altitude = Math.max(1, Math.min(maxAltitude, altitude + value));
+  speed = 5;
   updateDisplay();
-});
-
-document.getElementById("land").addEventListener("click", () => {
-  state.flying = false;
-  state.altitude = 0;
-  state.x = 50;
-  state.y = 55;
-  state.heading = 0;
-
-  message.textContent =
-    "Pouso virtual concluído. O drone voltou ao ponto inicial.";
-
-  updateDisplay();
-});
-
-document.getElementById("reset").addEventListener("click", () => {
-  state = {
-    x: 50,
-    y: 55,
-    altitude: 0,
-    heading: 0,
-    flying: false
-  };
-
-  message.textContent =
-    "Simulação reiniciada. Clique em DECOLAR para começar.";
-
-  updateDisplay();
-});
-
-
-// CHECKLIST DE SEGURANÇA
-
-const checks = [
-  ...document.querySelectorAll('.checklist input[type="checkbox"]')
-];
-
-const progressBar = document.getElementById("progressBar");
-const progressText = document.getElementById("progressText");
-
-function updateChecklist() {
-  const completed = checks.filter(item => item.checked).length;
-
-  progressBar.style.width =
-    (completed / checks.length * 100) + "%";
-
-  progressText.textContent =
-    `${completed} de ${checks.length} itens concluídos`;
 }
 
-checks.forEach(item => {
-  item.addEventListener("change", updateChecklist);
-});
-
-
-// TESTE DE CONHECIMENTO
-
-const questions = [
-  {
-    question: "O que fazer antes de decolar?",
-    answers: [
-      "Acelerar imediatamente",
-      "Verificar o equipamento e o local",
-      "Voar perto de pessoas"
-    ],
-    correct: 1,
-    explanation:
-      "Correto! Verifique o drone, o ambiente e as regras aplicáveis."
-  },
-  {
-    question: "Para que serve o comando de altitude?",
-    answers: [
-      "Para subir ou descer",
-      "Para tirar fotografias",
-      "Para desligar o controle"
-    ],
-    correct: 0,
-    explanation:
-      "Correto! O comando controla a subida e a descida."
-  },
-  {
-    question: "Qual prática ajuda a manter o voo seguro?",
-    answers: [
-      "Ignorar o vento",
-      "Voar sem observar o entorno",
-      "Manter o drone à vista e longe de pessoas"
-    ],
-    correct: 2,
-    explanation:
-      "Correto! Mantenha contato visual e evite riscos no entorno."
-  }
-];
-
-let questionIndex = 0;
-let score = 0;
-let answered = false;
-
-const questionElement = document.getElementById("question");
-const answersElement = document.getElementById("answers");
-const feedback = document.getElementById("feedback");
-const nextButton = document.getElementById("nextQuestion");
-const questionNumber = document.getElementById("questionNumber");
-
-function showQuestion() {
-  const item = questions[questionIndex];
-
-  answered = false;
-  questionElement.textContent = item.question;
-  questionNumber.textContent =
-    `QUESTÃO 0${questionIndex + 1} / 03`;
-
-  feedback.textContent = "Selecione uma resposta.";
-  nextButton.disabled = true;
-  nextButton.textContent =
-    questionIndex === questions.length - 1
-      ? "VER RESULTADO →"
-      : "PRÓXIMA →";
-
-  answersElement.innerHTML = "";
-
-  item.answers.forEach((answer, index) => {
-    const button = document.createElement("button");
-
-    button.textContent =
-      String.fromCharCode(65 + index) + ". " + answer;
-
-    button.addEventListener("click", () => selectAnswer(index));
-
-    answersElement.appendChild(button);
-  });
-}
-
-function selectAnswer(index) {
-  if (answered) return;
-
-  answered = true;
-
-  const item = questions[questionIndex];
-  const buttons = [...answersElement.querySelectorAll("button")];
-
-  buttons.forEach((button, i) => {
-    button.disabled = true;
-
-    if (i === item.correct) {
-      button.classList.add("correct");
-    }
-
-    if (i === index && index !== item.correct) {
-      button.classList.add("wrong");
-    }
-  });
-
-  if (index === item.correct) {
-    score++;
-  }
-
-  feedback.textContent = item.explanation;
-  nextButton.disabled = false;
-}
-
-nextButton.addEventListener("click", () => {
-  if (!answered) return;
-
-  if (questionIndex < questions.length - 1) {
-    questionIndex++;
-    showQuestion();
+function rotateDrone() {
+  if (!flying) {
+    statusText.textContent = "DECOLE PRIMEIRO";
     return;
   }
 
-  questionNumber.textContent = "RESULTADO FINAL";
-  questionElement.textContent =
-    `Você acertou ${score} de ${questions.length} questões.`;
+  rotation += 45;
+  speed = 5;
+  updateDisplay();
+}
 
-  answersElement.innerHTML = "";
+document.getElementById("takeoff").addEventListener("click", takeoff);
+document.getElementById("land").addEventListener("click", land);
+document.getElementById("reset").addEventListener("click", resetSimulator);
 
-  feedback.textContent = score === questions.length
-    ? "Excelente! Você acertou todas as questões."
-    : "Revise os fundamentos e tente novamente.";
+document.getElementById("up").addEventListener("click", () => moveDrone("up"));
+document.getElementById("down").addEventListener("click", () => moveDrone("down"));
+document.getElementById("left").addEventListener("click", () => moveDrone("left"));
+document.getElementById("right").addEventListener("click", () => moveDrone("right"));
 
-  nextButton.textContent = "REFAZER TESTE";
-  nextButton.disabled = false;
+document.getElementById("increaseAltitude").addEventListener("click", () => changeAltitude(5));
+document.getElementById("decreaseAltitude").addEventListener("click", () => changeAltitude(-5));
 
-  nextButton.onclick = () => {
-    score = 0;
-    questionIndex = 0;
-    nextButton.onclick = null;
-    showQuestion();
-  };
+document.getElementById("rotate").addEventListener("click", rotateDrone);
+
+document.addEventListener("keydown", (event) => {
+  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(event.key)) {
+    event.preventDefault();
+  }
+
+  if (event.key === "ArrowUp") moveDrone("up");
+  if (event.key === "ArrowDown") moveDrone("down");
+  if (event.key === "ArrowLeft") moveDrone("left");
+  if (event.key === "ArrowRight") moveDrone("right");
+  if (event.key === " ") rotateDrone();
 });
 
 updateDisplay();
-updateChecklist();
-showQuestion();
